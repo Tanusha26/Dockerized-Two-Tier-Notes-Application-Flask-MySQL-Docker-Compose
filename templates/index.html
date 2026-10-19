@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes App</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>My Notes App</h1>
+
+        <form method="POST">
+            <input name="content"
+                   placeholder="Enter your note"
+                   maxlength="255"
+                   required>
+            <button type="submit">Add Note</button>
+        </form>
+
+        <h2>Saved Notes</h2>
+        <ul>
+            {% for note in notes %}
+                <li>{{ note.content }}</li>
+            {% else %}
+                <li>No notes added yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
